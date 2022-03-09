@@ -45,7 +45,6 @@ void meniu(Sifonier Sifonierul_nostru){
         std::cout<<"Apasa orice pentru a vedea din nou meniul\n";
         afisare_meniu();
         std::cin>>comanda;
-
     }
 }
 int main()
