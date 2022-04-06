@@ -11,11 +11,20 @@
 class Haina {
 private:
 protected:
-    float pret{};
+    float pret;
     std::string material;
 public:
     Haina() = default;
     Haina(float pret, std::string material):pret(pret),material(std::move(material)){}
+    Haina(const Haina& other) : pret(other.pret), material(other.material) {
+        std::cout << "Constr de copiere Haina\n";
+    }
+    Haina& operator=(const Haina& other) {
+        pret = other.pret;
+        material = other.material;
+        std::cout << "operator= copiere Pantof\n";
+        return *this;
+    }
     [[nodiscard]] float getPret() const
     {
         return pret;
@@ -28,6 +37,11 @@ public:
        os << "Pret: " << hn.pret << ", material: " << hn.material << "\n";
         return os;
     }
+    virtual void afisare()
+    {
+        std::cout<<material<<"\n"<<pret<<"\n";
+    }
+
 };
 
 

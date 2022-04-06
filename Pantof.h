@@ -25,6 +25,16 @@ public:
     {
         return material;
     }
+    Pantof(const Pantof& other) : pret{other.pret}, material{other.material},marime{other.marime} {
+        std::cout << "Constr de copiere Pantof\n";
+    }
+    Pantof& operator=(const Pantof& other) {
+        pret = other.pret;
+        material = other.material;
+        marime  = other.marime;
+        std::cout << "operator= copiere Pantof\n";
+        return *this;
+    }
     [[nodiscard]] int getMarime() const
     {
         return marime;
