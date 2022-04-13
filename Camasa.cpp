@@ -26,3 +26,17 @@ void Camasa::afisare() {
 Camasa::Camasa(float pret, const std::string &material, bool manecaLunga, const std::string &stil,
                const std::string &culoare) : Haina(pret, material), maneca_lunga(manecaLunga), stil(stil),
                                              culoare(culoare) {}
+
+Camasa &Camasa::operator=(const Camasa &other) {
+    pret = other.pret;
+    material = other.material;
+    stil = other.stil;
+    maneca_lunga = other.maneca_lunga;
+    culoare = other.culoare;
+    std::cout << "operator= copiere Camasa\n";
+    return *this;
+}
+
+Camasa::Camasa(const Camasa &other) :maneca_lunga(other.maneca_lunga),stil(other.stil),culoare(other.culoare){
+    std::cout << "Constr de copiere Camasa\n";
+}

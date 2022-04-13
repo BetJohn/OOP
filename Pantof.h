@@ -16,33 +16,13 @@ protected:
     int marime{};
 public:
     Pantof() = default;
-    Pantof(float pret, std::string material, int marime):pret(pret), material(std::move(material)), marime(marime){}
-    [[nodiscard]] float getPret() const
-    {
-        return this->pret;
-    }
-    std::string getMaterial()
-    {
-        return material;
-    }
-    Pantof(const Pantof& other) : pret{other.pret}, material{other.material},marime{other.marime} {
-        std::cout << "Constr de copiere Pantof\n";
-    }
-    Pantof& operator=(const Pantof& other) {
-        pret = other.pret;
-        material = other.material;
-        marime  = other.marime;
-        std::cout << "operator= copiere Pantof\n";
-        return *this;
-    }
-    [[nodiscard]] int getMarime() const
-    {
-        return marime;
-    }
-    friend std::ostream& operator<<(std::ostream& os, const Pantof& pt) {
-        os << "Pret: " << pt.pret << ", material: " << pt.material <<", marime: "<<pt.marime<<"\n";
-        return os;
-    }
+    Pantof(float pret, std::string material, int marime);
+    [[nodiscard]] float getPret() const;
+    std::string getMaterial();
+    Pantof(const Pantof& other);
+    Pantof& operator=(const Pantof& other);
+    [[nodiscard]] int getMarime() const;
+    friend std::ostream& operator<<(std::ostream& os, const Pantof& pt);
 };
 
 #endif //OOP_PANTOF_H

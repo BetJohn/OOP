@@ -5,7 +5,7 @@
 #include <vector>
 #include <fstream>
 #include "Camasa.h"
-#include "cmake-build-debug/Pantalon.h"
+#include "Pantalon.h"
 
 //#include <cstdlib>
 void afisare_meniu(){
@@ -77,13 +77,13 @@ int main()
     Sifonierul_nostru.afisare_haine();
     Sifonierul_nostru.afisare_pantofi();
     meniu(Sifonierul_nostru);
-    std::cout<<"\n\n\n\n";
-    Haina aux = Haina(50,"DolceGabana");
-    Camasa camasa = Camasa(aux.getPret(),aux.getMaterial(),true,"Stil","Alb");
-    camasa.afisare();
-    Pantalon pantalon = Pantalon(10,"Casmir",34,true,"Vintage","Crem");
-    std::cout<<pantalon;
-    Pantalon pantalon1 = pantalon;
-    std::cout<<pantalon1;
+//    std::cout<<"\n\n\n\n";
+//    Haina aux = Haina(50,"DolceGabana");
+//    Camasa camasa = Camasa(aux.getPret(),aux.getMaterial(),true,"Stil","Alb");
+//    camasa.afisare();
+//    Pantalon pantalon = Pantalon(10,"Casmir",34,true,"Vintage","Crem");
+//    std::cout<<pantalon;
+//    Pantalon pantalon1 = pantalon;
+//    std::cout<<pantalon1;
     return 0;
 }

@@ -16,18 +16,8 @@ public:
 
     Camasa(float pret, const std::string &material, bool manecaLunga, const std::string &stil,
            const std::string &culoare);
-    Camasa(const Camasa& other) :maneca_lunga(other.maneca_lunga),stil(other.stil),culoare(other.culoare){
-        std::cout << "Constr de copiere Camasa\n";
-    }
-    Camasa& operator=(const Camasa& other) {
-        pret = other.pret;
-        material = other.material;
-        stil = other.stil;
-        maneca_lunga = other.maneca_lunga;
-        culoare = other.culoare;
-        std::cout << "operator= copiere Camasa\n";
-        return *this;
-    }
+    Camasa(const Camasa& other);
+    Camasa& operator=(const Camasa& other);
     void afisare() override;
 
     const std::string &getStil() const;

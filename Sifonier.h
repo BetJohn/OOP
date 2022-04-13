@@ -8,6 +8,7 @@
 #include "Haina.h"
 #include <vector>
 #include "iostream"
+#include <memory>
 class Sifonier {
 private:
 protected:
@@ -17,21 +18,8 @@ protected:
     std:: vector <Pantof> p_pantofi;
 public:
     Sifonier() = default;
-    Sifonier(int nr_pantofi, int nr_haine, std::vector <Pantof> pantofi,std::vector <Haina> haine):nr_pantofi(nr_pantofi),nr_haine(nr_haine) {
-        for(int i=0;i<nr_pantofi;i++) {
-            p_pantofi.emplace_back(pantofi[i].getPret(), pantofi[i].getMaterial(), pantofi[i].getMarime());
-        }
-        for(int i=0;i<nr_haine;i++) {
-            h_haine.emplace_back(haine[i].getPret(), haine[i].getMaterial());
-        }
-    }
-    void afisare_haine(){
-        for(int i=0;i<nr_haine;i++)
-            std::cout<<h_haine[i];
-    }
-    void afisare_pantofi(){
-         for(int i=0;i<nr_pantofi;i++)
-             std::cout<<p_pantofi[i];
-    }
+    Sifonier(int nr_pantofi, int nr_haine, std::vector <Pantof> pantofi,std::vector <Haina> haine);
+    void afisare_haine();
+    void afisare_pantofi();
 };
 #endif //MAIN_CPP_SIFONIER_H
