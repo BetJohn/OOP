@@ -17,11 +17,11 @@ Haina::Haina(const Haina &other) : pret(other.pret), material(other.material) {
     std::cout << "Constr de copiere Haina\n";
 }
 
-float Haina::getPret() const {
+[[maybe_unused]] float Haina::getPret() const {
     return pret;
 }
 
-std::string Haina::getMaterial() {
+[[maybe_unused]] std::string Haina::getMaterial() {
     return material;
 }
 
@@ -30,6 +30,6 @@ std::ostream &operator<<(std::ostream &os, const Haina &hn) {
     return os;
 }
 
-void Haina::afisare() {
+[[maybe_unused]] void Haina::afisare() {
     std::cout<<material<<"\n"<<pret<<"\n";
 }

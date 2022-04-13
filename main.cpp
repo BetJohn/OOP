@@ -4,8 +4,7 @@
 #include "Sifonier.h"
 #include <vector>
 #include <fstream>
-#include "Camasa.h"
-#include "Pantalon.h"
+#include <memory>
 
 //#include <cstdlib>
 void afisare_meniu(){
@@ -58,13 +57,14 @@ int main()
     float pret;
     std::string material;
     fin>>nr_haine>>nr_pantofi;
-    std:: vector <Haina> haine(nr_haine);
+    std:: vector <std::shared_ptr<Haina>> haine(nr_haine);
     std:: vector <Pantof> pantofi(nr_pantofi);
     for(int i=0;i<nr_haine;i++){
         fin>>pret;
         fin.get();
         std::getline(fin, material);
-        haine[i] = Haina{pret,material};
+        auto haina = std::make_shared<Haina>(pret,material);
+        haine.emplace_back(haina);
     }
     for(int i=0;i<nr_pantofi;i++) {
         fin >> pret;
@@ -73,7 +73,7 @@ int main()
         fin >> marime;
         pantofi[i] = Pantof(pret, material, marime);
     }
-    Sifonier Sifonierul_nostru = Sifonier{nr_pantofi,nr_haine,pantofi,haine};
+    Sifonier Sifonierul_nostru = Sifonier{nr_pantofi,nr_haine,haine,pantofi};
     Sifonierul_nostru.afisare_haine();
     Sifonierul_nostru.afisare_pantofi();
     meniu(Sifonierul_nostru);

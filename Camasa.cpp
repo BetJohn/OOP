@@ -4,15 +4,17 @@
 
 #include "Camasa.h"
 
-bool Camasa::isManecaLunga() const {
+#include <utility>
+
+[[maybe_unused]] bool Camasa::isManecaLunga() const {
     return maneca_lunga;
 }
 
-const std::string &Camasa::getStil() const {
+[[maybe_unused]] const std::string &Camasa::getStil() const {
     return stil;
 }
 
-const std::string &Camasa::getCuloare() const {
+[[maybe_unused]] const std::string &Camasa::getCuloare() const {
     return culoare;
 }
 void Camasa::afisare() {
@@ -23,9 +25,9 @@ void Camasa::afisare() {
         std::cout<<"Maneca scurta\n";
 }
 
-Camasa::Camasa(float pret, const std::string &material, bool manecaLunga, const std::string &stil,
-               const std::string &culoare) : Haina(pret, material), maneca_lunga(manecaLunga), stil(stil),
-                                             culoare(culoare) {}
+Camasa::Camasa(float pret, const std::string &material, bool manecaLunga, std::string stil,
+               std::string culoare) : Haina(pret, material), maneca_lunga(manecaLunga), stil(std::move(stil)),
+                                             culoare(std::move(culoare)) {}
 
 Camasa &Camasa::operator=(const Camasa &other) {
     pret = other.pret;

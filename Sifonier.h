@@ -14,12 +14,16 @@ private:
 protected:
     int nr_pantofi{};
     int nr_haine{};
-    std:: vector <Haina> h_haine;
+    std:: vector <std::shared_ptr<Haina>> h_haine;
     std:: vector <Pantof> p_pantofi;
 public:
     Sifonier() = default;
-    Sifonier(int nr_pantofi, int nr_haine, std::vector <Pantof> pantofi,std::vector <Haina> haine);
+//    Sifonier(int nr_pantofi, int nr_haine, std::vector <Pantof> pantofi,std::vector <std::shared_ptr<Haina>> haine);
     void afisare_haine();
+
+    Sifonier(int nrPantofi, int nrHaine, const std::vector<std::shared_ptr<Haina>> &hHaine,
+             std::vector<Pantof> pPantofi);
+
     void afisare_pantofi();
 };
 #endif //MAIN_CPP_SIFONIER_H

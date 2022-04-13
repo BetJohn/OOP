@@ -4,23 +4,24 @@
 
 #include "Pantalon.h"
 #include <iostream>
-Pantalon::Pantalon(float pret, const std::string &material, int marime, bool lungi, const std::string &stil,
-                   const std::string &culoare) : Haina(pret, material), marime(marime), lungi(lungi), stil(stil),
-                                                 culoare(culoare) {}
+#include <utility>
+Pantalon::Pantalon(float pret, const std::string &material, int marime, bool lungi, std::string stil,
+                   std::string culoare) : Haina(pret, material), marime(marime), lungi(lungi), stil(std::move(stil)),
+                                                 culoare(std::move(culoare)) {}
 
-int Pantalon::getMarime() const {
+[[maybe_unused]] int Pantalon::getMarime() const {
     return marime;
 }
 
-bool Pantalon::isLungi() const {
+[[maybe_unused]] bool Pantalon::isLungi() const {
     return lungi;
 }
 
-const std::string &Pantalon::getStil() const {
+[[maybe_unused]] const std::string &Pantalon::getStil() const {
     return stil;
 }
 
-const std::string &Pantalon::getCuloare() const {
+[[maybe_unused]] const std::string &Pantalon::getCuloare() const {
     return culoare;
 }
 
@@ -45,7 +46,7 @@ Pantalon &Pantalon::operator=(const Pantalon &other) {
 
 std::ostream &operator<<(std::ostream &os, const Pantalon &pt) {
     os << "Pret: " << pt.pret << ", material: " << pt.material <<", marime: "<<pt.marime;
-    if(pt.lungi== true)
+    if(pt.lungi)
         os<<", pantaloni: lungi";
     else
         os<<", pantaloni: scurti";

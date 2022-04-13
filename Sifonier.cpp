@@ -4,15 +4,7 @@
 
 #include "Sifonier.h"
 
-Sifonier::Sifonier(int nr_pantofi, int nr_haine, std::vector<Pantof> pantofi, std::vector<Haina> haine)
-        :nr_pantofi(nr_pantofi),nr_haine(nr_haine) {
-    for(int i=0;i<nr_pantofi;i++) {
-        p_pantofi.emplace_back(pantofi[i].getPret(), pantofi[i].getMaterial(), pantofi[i].getMarime());
-    }
-    for(int i=0;i<nr_haine;i++) {
-        h_haine.emplace_back(haine[i].getPret(), haine[i].getMaterial());
-    }
-}
+#include <utility>
 
 void Sifonier::afisare_haine() {
     for(int i=0;i<nr_haine;i++)
@@ -22,4 +14,12 @@ void Sifonier::afisare_haine() {
 void Sifonier::afisare_pantofi() {
     for(int i=0;i<nr_pantofi;i++)
         std::cout<<p_pantofi[i];
+}
+
+Sifonier::Sifonier(int nrPantofi, int nrHaine, const std::vector<std::shared_ptr<Haina>> &hHaine,
+                   std::vector<Pantof> pPantofi) : nr_pantofi(nrPantofi), nr_haine(nrHaine),
+                                                          p_pantofi(std::move(pPantofi)) {
+    for(const auto& haina:hHaine){
+        h_haine.emplace_back(haina);
+    }
 }

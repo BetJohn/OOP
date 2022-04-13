@@ -8,29 +8,32 @@
 
 #include "Haina.h"
 
-class Pantalon: public Haina{
+class [[maybe_unused]] Pantalon: public Haina{
 protected:
     int marime;
     bool lungi;
     std::string stil;
     std::string culoare;
 public:
-    Pantalon(float pret, const std::string &material, int marime, bool lungi, const std::string &stil,
-             const std::string &culoare);
+    Pantalon(float pret, const std::string &material, int marime, bool lungi, std::string stil,
+             std::string culoare);
 
     Pantalon(const Pantalon& other);
     Pantalon& operator=(const Pantalon& other);
 
-    [[nodiscard]] int getMarime() const;
+    [[maybe_unused]] [[nodiscard]] int getMarime() const;
 
-    [[nodiscard]] bool isLungi() const;
+    [[maybe_unused]] [[nodiscard]] bool isLungi() const;
 
-    [[nodiscard]] const std::string &getStil() const;
+    [[maybe_unused]] [[nodiscard]] const std::string &getStil() const;
 
     void afisare() override;
 
-    [[nodiscard]] const std::string &getCuloare() const;
+    [[maybe_unused]] [[nodiscard]] const std::string &getCuloare() const;
     friend std::ostream& operator<<(std::ostream& os, const Pantalon& pt);
+    [[nodiscard]] std::shared_ptr<Haina> clone() const override {
+        return std::make_shared <Pantalon>(*this);
+    }
 };
 
 
