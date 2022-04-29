@@ -12,6 +12,7 @@ void afisare_meniu(){
     std::cout<<"2. Vezi ce perechi de pantofi exista in sifonier\n";
     std::cout<<"3. Cauta o haine\n";
     std::cout<<"4. Cauta o pereche de pantofi\n";
+    std::cout<<"5. Inscriete chiar acum!\n";
     std::cout<<"0. Iesire din program\n";
 }
 void meniu(Sifonier Sifonierul_nostru){
@@ -29,12 +30,29 @@ void meniu(Sifonier Sifonierul_nostru){
                 break;
             }
             case 3: {
-                std::cout<<"Comming soon...Stay tuned\n";
+                std::cout<<"Comming soon...\n";
                 break;
             }
             case 4: {
-                std::cout<<"Comming soon...\n";
+                std::cout<<"Comming soon....\n";
                 break;
+            }
+            case 5: {
+                std::string nume;
+                std::cout<<"Introdu numele:\n";
+                std::cin.get();
+                std::getline(std::cin, nume);
+                if(!nume.empty())
+                {
+                    std::cout<<"Bun, ID-ul tau este 8080! Haide sa ti gasim outfitul perfect\n";
+                    std::cout<<"Poti cauta orice haina in sifonierul nostru!\n";
+                    break;
+                }
+                else
+                {
+                    throw ("Eroare! Numele nu a fost adaugat corect!\n");
+                    break;
+                }
             }
             case 0: {
                 return;
@@ -77,13 +95,5 @@ int main()
     Sifonierul_nostru.afisare_haine();
     Sifonierul_nostru.afisare_pantofi();
     meniu(Sifonierul_nostru);
-//    std::cout<<"\n\n\n\n";
-//    Haina aux = Haina(50,"DolceGabana");
-//    Camasa camasa = Camasa(aux.getPret(),aux.getMaterial(),true,"Stil","Alb");
-//    camasa.afisare();
-//    Pantalon pantalon = Pantalon(10,"Casmir",34,true,"Vintage","Crem");
-//    std::cout<<pantalon;
-//    Pantalon pantalon1 = pantalon;
-//    std::cout<<pantalon1;
     return 0;
 }
