@@ -9,24 +9,28 @@
 class [[maybe_unused]] Camasa: public Haina{
 protected:
     bool maneca_lunga;
-    std::string stil;
     std::string culoare;
 public:
     [[maybe_unused]] [[nodiscard]] bool isManecaLunga() const;
 
-    Camasa(float pret, const std::string &material, bool manecaLunga, std::string stil,
-           std::string culoare);
+
+    Camasa(float pret, const std::string &material, const std::string &stil, bool manecaLunga,
+           const std::string &culoare);
+
     Camasa(const Camasa& other);
     Camasa& operator=(const Camasa& other);
-    void afisare() override;
 
-    [[maybe_unused]] [[nodiscard]] const std::string &getStil() const;
+    Camasa();
+
+    void afisare() override;
 
     [[maybe_unused]] [[nodiscard]] const std::string &getCuloare() const;
 
     [[maybe_unused]] [[nodiscard]] std::shared_ptr<Haina> clone() const override {
         return std::make_shared <Camasa>(*this);
     }
+
+    bool matches(Haina haina) override;
 };
 
 

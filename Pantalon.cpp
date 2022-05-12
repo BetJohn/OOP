@@ -4,21 +4,8 @@
 
 #include "Pantalon.h"
 #include <iostream>
-#include <utility>
-Pantalon::Pantalon(float pret, const std::string &material, int marime, bool lungi, std::string stil,
-                   std::string culoare) : Haina(pret, material), marime(marime), lungi(lungi), stil(std::move(stil)),
-                                                 culoare(std::move(culoare)) {}
-
 [[maybe_unused]] int Pantalon::getMarime() const {
     return marime;
-}
-
-[[maybe_unused]] bool Pantalon::isLungi() const {
-    return lungi;
-}
-
-[[maybe_unused]] const std::string &Pantalon::getStil() const {
-    return stil;
 }
 
 [[maybe_unused]] const std::string &Pantalon::getCuloare() const {
@@ -26,10 +13,15 @@ Pantalon::Pantalon(float pret, const std::string &material, int marime, bool lun
 }
 
 void Pantalon::afisare() {
-    std::cout<<marime<<"\n"<<stil<<"\n"<<culoare<<"\n";
+    std::cout<< "Obiect: Pantalon, Pret: " << pret << ", material: " << material <<", marime: "<<marime;
+    if(lungi)
+        std::cout<<", pantaloni: lungi";
+    else
+        std::cout<<", pantaloni: scurti";
+    std::cout<< ", culoare : " << culoare << ", stil: " << stil<< "\n";
 }
 
-Pantalon::Pantalon(const Pantalon &other) :Haina(other),marime(other.marime),lungi(other.lungi),stil(other.stil),culoare(other.culoare) {
+Pantalon::Pantalon(const Pantalon &other) :Haina(other),marime(other.marime),lungi(other.lungi),culoare(other.culoare) {
     std::cout << "Constr de copiere Pantalon\n";
 }
 
@@ -44,12 +36,30 @@ Pantalon &Pantalon::operator=(const Pantalon &other) {
     return *this;
 }
 
-std::ostream &operator<<(std::ostream &os, const Pantalon &pt) {
-    os << "Pret: " << pt.pret << ", material: " << pt.material <<", marime: "<<pt.marime;
-    if(pt.lungi)
-        os<<", pantaloni: lungi";
-    else
-        os<<", pantaloni: scurti";
-    os << ", culoare : " << pt.culoare << ", stil: " << pt.stil<< "\n";
+std::ostream &operator<<(std::ostream &os, Pantalon pt) {
+    pt.afisare();
     return os;
+}
+
+
+Pantalon::Pantalon(float pret, const std::string &material, const std::string &stil, int marime, bool lungi,
+                   const std::string &culoare) : Haina(pret, material, stil), marime(marime), lungi(lungi),
+                                                 culoare(culoare) {}
+
+bool Pantalon::matches(Haina haina) {
+    if(haina.getStil().compare("Vintage")==0 && !this->isLungi())
+        return false;
+    if(haina.getStil().compare("Country")==0 && !this->isLungi())
+        return false;
+    return true;
+}
+
+Pantalon::Pantalon() {}
+
+[[maybe_unused]] void Pantalon::setLungi(bool lungi) {
+    Pantalon::lungi = lungi;
+}
+
+bool Pantalon::isLungi() const {
+    return lungi;
 }

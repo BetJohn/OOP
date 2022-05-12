@@ -7,8 +7,8 @@
 #include <utility>
 
 void Sifonier::afisare_haine() {
-    for(int i=0;i<nr_haine;i++)
-        std::cout<<h_haine[i];
+    for(const auto haina:h_haine)
+        haina->afisare();
 }
 
 void Sifonier::afisare_pantofi() {
@@ -22,4 +22,12 @@ Sifonier::Sifonier(int nrPantofi, int nrHaine, const std::vector<std::shared_ptr
     for(const auto& haina:hHaine){
         h_haine.emplace_back(haina);
     }
+}
+
+[[maybe_unused]] const std::vector<std::shared_ptr<Haina>> &Sifonier::getHHaine() const {
+    return h_haine;
+}
+
+[[maybe_unused]] const std::vector<Pantof> &Sifonier::getPPantofi() const {
+    return p_pantofi;
 }

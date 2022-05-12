@@ -15,14 +15,12 @@ Pantof::Pantof(float pret, std::string material, int marime) :pret(pret), materi
 }
 
 Pantof::Pantof(const Pantof &other) : pret{other.pret}, material{other.material},marime{other.marime} {
-    std::cout << "Constr de copiere Pantof\n";
 }
 
 Pantof &Pantof::operator=(const Pantof &other) {
     pret = other.pret;
     material = other.material;
     marime  = other.marime;
-    std::cout << "operator= copiere Pantof\n";
     return *this;
 }
 

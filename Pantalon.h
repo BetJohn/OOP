@@ -12,25 +12,28 @@ class [[maybe_unused]] Pantalon: public Haina{
 protected:
     int marime;
     bool lungi;
-    std::string stil;
     std::string culoare;
 public:
-    Pantalon(float pret, const std::string &material, int marime, bool lungi, std::string stil,
-             std::string culoare);
-
     Pantalon(const Pantalon& other);
-    Pantalon& operator=(const Pantalon& other);
 
+    [[maybe_unused]] void setLungi(bool lungi);
+
+    bool matches(Haina haina) override;
+
+    Pantalon(float pret, const std::string &material, const std::string &stil, int marime, bool lungi,
+             const std::string &culoare);
+
+    Pantalon& operator=(const Pantalon& other);
     [[maybe_unused]] [[nodiscard]] int getMarime() const;
 
-    [[maybe_unused]] [[nodiscard]] bool isLungi() const;
-
-    [[maybe_unused]] [[nodiscard]] const std::string &getStil() const;
+    bool isLungi() const;
 
     void afisare() override;
 
     [[maybe_unused]] [[nodiscard]] const std::string &getCuloare() const;
-    friend std::ostream& operator<<(std::ostream& os, const Pantalon& pt);
+
+    Pantalon();
+
     [[nodiscard]] std::shared_ptr<Haina> clone() const override {
         return std::make_shared <Pantalon>(*this);
     }
