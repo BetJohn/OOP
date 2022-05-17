@@ -4,6 +4,7 @@
 #include "Sifonier.h"
 #include "Pantalon.h"
 #include "Camasa.h"
+#include "Exceptie.h"
 #include <vector>
 #include <fstream>
 #include <memory>
@@ -63,15 +64,17 @@ void meniu(Sifonier Sifonierul_nostru){
                 std::cout<<"Introdu numele:\n";
                 std::cin.get();
                 std::getline(std::cin, nume);
-                if(!nume.empty())
-                {
-                    std::cout<<"Bun, ID-ul tau este 8080! Haide sa ti gasim outfitul perfect\n";
-                    std::cout<<"Poti cauta orice haina in sifonierul nostru!\n";
-                    break;
-                }
-                else
-                {
-                    throw ("Eroare! Numele nu a fost adaugat corect!\n");
+                try{
+                    if(!nume.empty())
+                    {
+                        std::cout<<"Bun, ID-ul tau este 8080! Haide sa ti gasim outfitul perfect\n";
+                        std::cout<<"Poti cauta orice haina in sifonierul nostru!\n";
+                        break;
+                    }
+                    Exceptie eroare;
+                    throw eroare;
+                }catch (Exceptie exceptie){
+                    exceptie.mesaj();
                     break;
                 }
             }
