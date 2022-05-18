@@ -1,15 +1,21 @@
-3 2
+4 2
 Haina
 100
 Lana
 Vintage
 Pantalon
-200
+0
 Piele de firma
 RockNRoll
 36
 1
 Blue
+Palarie
+75
+Paie
+Country
+M
+Rotunda
 Camasa
 80
 Bumbac

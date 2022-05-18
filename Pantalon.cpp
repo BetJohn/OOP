@@ -46,19 +46,15 @@ Pantalon::Pantalon(float pret, const std::string &material, const std::string &s
                    const std::string &culoare) : Haina(pret, material, stil), marime(marime), lungi(lungi),
                                                  culoare(culoare) {}
 
-bool Pantalon::matches(Haina haina) {
-    if(haina.getStil().compare("Vintage")==0 && !this->isLungi())
+bool Pantalon::matches(std::shared_ptr<Haina> haina)const {
+    if(haina->getStil().compare("Vintage")==0 && !this->isLungi())
         return false;
-    if(haina.getStil().compare("Country")==0 && !this->isLungi())
+    if(haina->getStil().compare("Country")==0 && !this->isLungi())
         return false;
     return true;
 }
 
 Pantalon::Pantalon() {}
-
-[[maybe_unused]] void Pantalon::setLungi(bool lungi) {
-    Pantalon::lungi = lungi;
-}
 
 bool Pantalon::isLungi() const {
     return lungi;

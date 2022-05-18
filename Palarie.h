@@ -8,39 +8,23 @@
 
 #include "Haina.h"
 
-class Palarie : public  Haina {
-private:
+class [[maybe_unused]] Palarie : public  Haina {
+protected:
+    std::string forma;
     char sex;
 public:
-    Palarie(float pret, const std::string &material, const std::string &stil, char sex, const std::string &forma);
-
-    const std::string &getStil() const override;
+    [[maybe_unused]] Palarie(float pret, const std::string &material, const std::string &stil, char sex, const std::string &forma);
 
     void afisare() override;
 
-    std::shared_ptr<Haina> clone() const override;
+    bool matches(std::shared_ptr<Haina> haina)const override;
 
-    bool matches(Haina haina) override;
+    [[maybe_unused]] char getSex() const;
 
-private:
-    std::string forma;
+    [[maybe_unused]] const std::string &getForma() const;
 };
 
-const std::string &Palarie::getStil() const {
-    return Haina::getStil();
-}
 
-void Palarie::afisare() {
-    Haina::afisare();
-}
-
-std::shared_ptr<Haina> Palarie::clone() const {
-    return Haina::clone();
-}
-
-bool Palarie::matches(Haina haina) {
-    return Haina::matches(haina);
-}
 
 
 #endif //HAINA_H_PALARIE_H

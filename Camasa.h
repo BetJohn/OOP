@@ -17,9 +17,6 @@ public:
     Camasa(float pret, const std::string &material, const std::string &stil, bool manecaLunga,
            const std::string &culoare);
 
-    Camasa(const Camasa& other);
-    Camasa& operator=(const Camasa& other);
-
     Camasa();
 
     void afisare() override;
@@ -30,7 +27,7 @@ public:
         return std::make_shared <Camasa>(*this);
     }
 
-    bool matches(Haina haina) override;
+    bool matches(std::shared_ptr<Haina> haina)const override;
 };
 
 

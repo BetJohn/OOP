@@ -5,6 +5,8 @@
 #include "Pantalon.h"
 #include "Camasa.h"
 #include "Exceptie.h"
+#include "Palarie.h"
+#include "ExceptieNume.h"
 #include <vector>
 #include <fstream>
 #include <memory>
@@ -17,6 +19,16 @@ void afisare_meniu(){
     std::cout<<"5. Inscriete chiar acum!\n";
     std::cout<<"6. Verifica un outfit!\n";
     std::cout<<"0. Iesire din program\n";
+}
+void verifica_nume(std::string nume){
+    if(!nume.empty())
+    {
+        std::cout<<"Bun, ID-ul tau este 8080! Haide sa ti gasim outfitul perfect\n";
+        std::cout<<"Poti cauta orice haina in sifonierul nostru!\n";
+        return;
+    }
+    throw ExceptieNume("Numele introdus este gol!\n");
+
 }
 void meniu(Sifonier Sifonierul_nostru){
     int comanda;
@@ -64,17 +76,11 @@ void meniu(Sifonier Sifonierul_nostru){
                 std::cout<<"Introdu numele:\n";
                 std::cin.get();
                 std::getline(std::cin, nume);
+                //de facut o functie de verificare care sa arunce eroarea
                 try{
-                    if(!nume.empty())
-                    {
-                        std::cout<<"Bun, ID-ul tau este 8080! Haide sa ti gasim outfitul perfect\n";
-                        std::cout<<"Poti cauta orice haina in sifonierul nostru!\n";
-                        break;
-                    }
-                    Exceptie eroare;
-                    throw eroare;
-                }catch (Exceptie exceptie){
-                    exceptie.mesaj();
+                    verifica_nume(nume);
+                }catch (ExceptieNume){
+                    std::cout<<"Numele nu poate fi gol!\n";
                     break;
                 }
             }
@@ -95,7 +101,6 @@ void meniu(Sifonier Sifonierul_nostru){
                             haina->afisare();
                             gasit_pants = false;
                             auto pantalon = haina;
-                            pantalon1.setStil(pantalon->getStil());
                             break;
                         }
                     }
@@ -114,7 +119,6 @@ void meniu(Sifonier Sifonierul_nostru){
                             haina->afisare();
                             gasit_camasa = false;
                             auto camasa = haina;
-                            camasa1.setStil(camasa->getStil());
                             break;
                         }
                     }
@@ -124,7 +128,7 @@ void meniu(Sifonier Sifonierul_nostru){
                         std::getline(std::cin,material);
                     }
                 }
-                if(pantalon1.matches(camasa1))
+                if(true)
                     std::cout<<"Da, "<<pantalon1.getStil()<<" se potriveste cu "<<camasa1.getStil()<<"! Distractie placuta!\n";
                 else
                     std::cout<<"Din pacate, "<<pantalon1.getStil()<<"nu se potriveste cu "<<camasa1.getStil()<<"... Iti sugerez sa te uiti din nou prin garderoba!\n";
@@ -145,7 +149,6 @@ void meniu(Sifonier Sifonierul_nostru){
 }
 int main()
 {
-
     std:: ifstream fin("date.in");
     int nr_pantofi,nr_haine,marime;
     float pret;
@@ -180,6 +183,19 @@ int main()
                 std::getline(fin, culoare);
                 auto pantalon = std::make_shared<Pantalon>(pret,material,stil,marime,esteLung,culoare);
                 haine.emplace_back(pantalon);
+            }
+            else if(tipHaina.compare("Palarie")==0){
+                fin>>pret;
+                fin.get();
+                std::getline(fin, material);
+                std::getline(fin, stil);
+                char sex;
+                std::string forma;
+                fin>>sex;
+                fin.get();
+                std::getline(fin,forma);
+                auto palarie = std::make_shared<Palarie>(pret,material,stil,sex,forma);
+                haine.emplace_back(palarie);
             }
             else{
                 fin>>pret;

@@ -10,8 +10,6 @@
 #include <memory>
 #include "iostream"
 class Haina{
-private:
-protected:
 public:
     void setStil(const std::string &stil);
 
@@ -24,17 +22,15 @@ public:
     Haina() = default;
     Haina(float pret, std::string material);
 
-    virtual const std::string &getStil() const;
+    const std::string &getStil() const;
 
     Haina(float pret, const std::string &material, const std::string &stil);
 
     Haina(const Haina& other);
-    Haina& operator=(const Haina& other);
 
     [[maybe_unused]] [[nodiscard]] float getPret() const;
 
     [[maybe_unused]] std::string getMaterial();
-    friend std::ostream& operator<<(std::ostream& os, const Haina& hn);
 
     [[maybe_unused]] virtual void afisare();
 
@@ -42,7 +38,7 @@ public:
         return nullptr;
     }
 
-    [[maybe_unused]] virtual bool matches(Haina haina);
+    [[maybe_unused]] virtual bool matches(std::shared_ptr<Haina> haina)const{};
 };
 
 

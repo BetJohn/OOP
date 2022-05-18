@@ -8,11 +8,10 @@
 #include <exception>
 #include <iostream>
 
-class Exceptie : public std::exception{
+class Exceptie : public std::invalid_argument{
 public:
-    void mesaj(){
-        std::cout<<"Numele introdus este cam gol"<<std::endl;
-    }
+
+    Exceptie(const std::string &arg);
 };
 
 

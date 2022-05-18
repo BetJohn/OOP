@@ -22,25 +22,12 @@ void Camasa::afisare() {
         std::cout<<"Maneca scurta\n";
 }
 
-bool Camasa::matches(Haina haina) {
-    if(haina.getStil().compare("Party")==0 && this->material.substr(0,5).compare("Piele")==0)
+[[maybe_unused]] bool Camasa::matches(const std::shared_ptr<Haina> haina)const{
+    if(haina->getStil().compare("Party")==0 && this->material.substr(0,5).compare("Piele")==0)
         return false;
-    if(haina.getStil().compare("Vintage")==0 && !this->isManecaLunga())
+    if(haina->getStil().compare("Vintage")==0 && !this->isManecaLunga())
         return false;
     return true;
-}
-
-Camasa &Camasa::operator=(const Camasa &other) {
-    pret = other.pret;
-    material = other.material;
-    stil = other.stil;
-    maneca_lunga = other.maneca_lunga;
-    culoare = other.culoare;
-    return *this;
-}
-
-Camasa::Camasa(const Camasa &other) {
-
 }
 
 Camasa::Camasa(float pret, const std::string &material, const std::string &stil, bool manecaLunga,
