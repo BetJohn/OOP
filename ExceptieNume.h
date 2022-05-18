@@ -10,7 +10,7 @@
 
 class ExceptieNume : public Exceptie{
 public:
-    explicit ExceptieNume(const std::string &arg) : Exceptie(arg){}
+    ExceptieNume(const std::string &arg) : Exceptie(arg){}
 };
 
 

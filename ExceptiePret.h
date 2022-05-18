@@ -10,7 +10,7 @@
 #include <iostream>
 class ExceptiePret : public Exceptie {
 public:
-    explicit ExceptiePret(const std::string &arg) : Exceptie(arg){}
+    ExceptiePret(const std::string &arg) : Exceptie(arg){}
 };
 
 
