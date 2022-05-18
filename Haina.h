@@ -11,7 +11,6 @@
 #include "iostream"
 class Haina{
 public:
-    void setStil(const std::string &stil);
 
 protected:
     float pret{};
@@ -38,7 +37,7 @@ public:
         return nullptr;
     }
 
-    [[maybe_unused]] virtual bool matches(std::shared_ptr<Haina> haina)const{};
+    [[maybe_unused]] virtual bool matches(std::shared_ptr<Haina> haina)const{return 0;};
 };
 
 

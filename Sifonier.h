@@ -13,7 +13,7 @@ class Sifonier {
 private:
 protected:
     int nr_pantofi{};
-    int nr_haine{};
+    [[maybe_unused]] int nr_haine{};
     std:: vector <std::shared_ptr<Haina>> h_haine;
 public:
     [[maybe_unused]] const std::vector<std::shared_ptr<Haina>> &getHHaine() const;
