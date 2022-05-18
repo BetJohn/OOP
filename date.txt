@@ -1,3 +1,24 @@
-2
-3
+3 2
+Haina
+100
+Lana
+Vintage
+Pantalon
+200
+Piele de firma
+RockNRoll
+36
+1
+Blue
+Camasa
+80
+Bumbac
+Party
 0
+Verde
+50
+cauciuc
+43
+20
+paie
+39
