@@ -16,9 +16,9 @@ protected:
     [[maybe_unused]] int nr_haine{};
     std:: vector <std::shared_ptr<Haina>> h_haine;
 public:
-    [[maybe_unused]] const std::vector<std::shared_ptr<Haina>> &getHHaine() const;
+    [[maybe_unused]] [[nodiscard]] const std::vector<std::shared_ptr<Haina>> &getHHaine() const;
 
-    [[maybe_unused]] const std::vector<Pantof> &getPPantofi() const;
+    [[maybe_unused]] [[nodiscard]] const std::vector<Pantof> &getPPantofi() const;
 
 protected:
     std:: vector <Pantof> p_pantofi;

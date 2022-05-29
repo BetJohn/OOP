@@ -21,9 +21,9 @@ public:
     Haina() = default;
     Haina(float pret, std::string material);
 
-    const std::string &getStil() const;
+    [[nodiscard]] const std::string &getStil() const;
 
-    Haina(float pret, const std::string &material, const std::string &stil);
+    Haina(float pret, std::string material, std::string stil);
 
     Haina(const Haina& other);
 
@@ -31,13 +31,15 @@ public:
 
     [[maybe_unused]] std::string getMaterial();
 
-    [[maybe_unused]] virtual void afisare();
+    virtual void afisare(std::ostream &os) const ;
+
+    friend std::ostream &operator<<(std::ostream &os, const Haina &haina);
 
     [[maybe_unused]] [[nodiscard]] virtual std::shared_ptr<Haina> clone() const{
         return nullptr;
     }
 
-    [[maybe_unused]] virtual bool matches(std::shared_ptr<Haina> haina)const{return 0;};
+    [[maybe_unused]] [[nodiscard]] virtual bool matches(std::shared_ptr<Haina> haina)const{return false;};
 };
 
 

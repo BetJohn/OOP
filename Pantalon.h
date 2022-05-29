@@ -10,23 +10,23 @@
 
 class [[maybe_unused]] Pantalon: public Haina{
 protected:
-    int marime;
-    bool lungi;
+    int marime{};
+    bool lungi{};
     std::string culoare;
 public:
     Pantalon(const Pantalon& other);
 
-    [[maybe_unused]] bool matches(std::shared_ptr<Haina> haina)const override;
+    [[maybe_unused]] [[nodiscard]] bool matches(std::shared_ptr<Haina> haina)const override;
 
     Pantalon(float pret, const std::string &material, const std::string &stil, int marime, bool lungi,
-             const std::string &culoare);
+             std::string culoare);
 
     Pantalon& operator=(const Pantalon& other);
     [[maybe_unused]] [[nodiscard]] int getMarime() const;
 
-    bool isLungi() const;
+    [[nodiscard]] bool isLungi() const;
 
-    void afisare() override;
+    void afisare(std::ostream &os) const override;
 
     [[maybe_unused]] [[nodiscard]] const std::string &getCuloare() const;
 

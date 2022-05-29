@@ -4,22 +4,24 @@
 
 #ifndef MAIN_CPP_CAMASA_H
 #define MAIN_CPP_CAMASA_H
+
+#include <ostream>
 #include "Haina.h"
 
 class [[maybe_unused]] Camasa: public Haina{
 protected:
-    bool maneca_lunga;
+    bool maneca_lunga{};
     std::string culoare;
 public:
     [[maybe_unused]] [[nodiscard]] bool isManecaLunga() const;
 
 
     Camasa(float pret, const std::string &material, const std::string &stil, bool manecaLunga,
-           const std::string &culoare);
+           std::string culoare);
 
     Camasa();
 
-    void afisare() override;
+    void afisare(std::ostream &os) const override;
 
     [[maybe_unused]] [[nodiscard]] const std::string &getCuloare() const;
 
@@ -27,7 +29,9 @@ public:
         return std::make_shared <Camasa>(*this);
     }
 
-    bool matches(std::shared_ptr<Haina> haina)const override;
+    friend std::ostream &operator<<(std::ostream &os, const Camasa &camasa);
+
+    [[nodiscard]] bool matches(std::shared_ptr<Haina> haina)const override;
 };
 
 

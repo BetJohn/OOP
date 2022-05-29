@@ -4,7 +4,6 @@
 #include "Sifonier.h"
 #include "Pantalon.h"
 #include "Camasa.h"
-#include "Exceptie.h"
 #include "Palarie.h"
 #include "ExceptieNume.h"
 #include <vector>
@@ -20,7 +19,7 @@ void afisare_meniu(){
     std::cout<<"6. Verifica un outfit!\n";
     std::cout<<"0. Iesire din program\n";
 }
-void verifica_nume(std::string nume){
+void verifica_nume(const std::string& nume){
     if(!nume.empty())
     {
         std::cout<<"Bun, ID-ul tau este 8080! Haide sa ti gasim outfitul perfect\n";
@@ -49,11 +48,11 @@ void meniu(Sifonier Sifonierul_nostru){
                 std::cin.get();
                 std::string material;
                 std::getline(std::cin,material);
-                for(auto haina:Sifonierul_nostru.getHHaine()){
-                    if(!haina->getMaterial().compare(material))
+                for(const auto& haina:Sifonierul_nostru.getHHaine()){
+                    if(haina->getMaterial()==material)
                     {
                         std::cout<<"Ura, am gasit haina:";
-                        haina->afisare();
+                        std::cout<<*haina;
                     }
                 }
                 break;
@@ -64,7 +63,7 @@ void meniu(Sifonier Sifonierul_nostru){
                 std::string material;
                 std::getline(std::cin,material);
                 for(auto pantof:Sifonierul_nostru.getPPantofi()){
-                    if(!pantof.getMaterial().compare(material))
+                    if(pantof.getMaterial()==material)
                     {
                         std::cout<<"Ura, am gasit perechea de pantofi:"<<pantof;
                     }
@@ -84,54 +83,23 @@ void meniu(Sifonier Sifonierul_nostru){
                     break;
                 }
             }
-            case 6:{
-                bool gasit_pants = true;
-                bool gasit_camasa = true;
-                Camasa camasa1 = Camasa();
-                Pantalon pantalon1 = Pantalon();
-                std::cout<<"Pentru inceput alege o pereche de pantaloni dupa material:";
-                std::string material;
-                std::cin.get();
-                std::getline(std::cin,material);
-                while(gasit_pants){
-                    for(auto haina:Sifonierul_nostru.getHHaine()){
-                        if(!haina->getMaterial().compare(material))
-                        {
-                            std::cout<<"Ura, am gasit perechea de pantaloni:\n";
-                            haina->afisare();
-                            gasit_pants = false;
-                            auto pantalon = haina;
-                            break;
-                        }
-                    }
-                    if(gasit_pants)
+            case 6: {
+                int gasit = 1;
+                for(const auto& h1 : Sifonierul_nostru.getHHaine())
+                    if(gasit)
                     {
-                        std::cout<<"Mai incearca o data!\nMaterial:";
-                        std::getline(std::cin,material);
+                        for(const auto& h2 : Sifonierul_nostru.getHHaine())
+                            if(!h1->matches(h2)) {
+                                std::cout << "Nu se potrivesc\n";
+                                gasit = 0;
+                                break;
+                            }
+                            else{
+                                gasit = 0;
+                                std::cout << "Toata garderoba este la moda!\n";
+                                break;
+                            }
                     }
-                }
-                std::cout<<"Perfect, acum sa gasim si camasa!\nIntrodu materialul:";
-                std::getline(std::cin,material);
-                while(gasit_camasa) {
-                    for (auto haina: Sifonierul_nostru.getHHaine()) {
-                        if (!haina->getMaterial().compare(material)){
-                            std::cout << "Ura, am gasit camasa:\n";
-                            haina->afisare();
-                            gasit_camasa = false;
-                            auto camasa = haina;
-                            break;
-                        }
-                    }
-                    if(gasit_camasa)
-                    {
-                        std::cout<<"Mai incearca o data!\nMaterial:";
-                        std::getline(std::cin,material);
-                    }
-                }
-                if(true)
-                    std::cout<<"Da, "<<pantalon1.getStil()<<" se potriveste cu "<<camasa1.getStil()<<"! Distractie placuta!\n";
-                else
-                    std::cout<<"Din pacate, "<<pantalon1.getStil()<<"nu se potriveste cu "<<camasa1.getStil()<<"... Iti sugerez sa te uiti din nou prin garderoba!\n";
                 break;
             }
             case 0: {
@@ -163,7 +131,7 @@ int main()
         if(i==0)
             fin.get();
         std::getline(fin,tipHaina);
-            if(tipHaina.compare("Haina")==0){
+            if(tipHaina=="Haina"){
                 fin>>pret;
                 fin.get();
                 std::getline(fin, material);
@@ -171,7 +139,7 @@ int main()
                 auto haina = std::make_shared<Haina>(pret,material,stil);
                 haine.emplace_back(haina);
             }
-            else if(tipHaina.compare("Pantalon")==0){
+            else if(tipHaina=="Pantalon"){
                 fin>>pret;
                 fin.get();
                 std::getline(fin, material);
@@ -184,7 +152,7 @@ int main()
                 auto pantalon = std::make_shared<Pantalon>(pret,material,stil,marime,esteLung,culoare);
                 haine.emplace_back(pantalon);
             }
-            else if(tipHaina.compare("Palarie")==0){
+            else if(tipHaina=="Palarie"){
                 fin>>pret;
                 fin.get();
                 std::getline(fin, material);

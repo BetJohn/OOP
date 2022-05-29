@@ -11,7 +11,7 @@
 class Exceptie : public std::invalid_argument{
 public:
 
-    Exceptie(const std::string &arg);
+    explicit Exceptie(const std::string &arg);
 };
 
 

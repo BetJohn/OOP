@@ -4,21 +4,13 @@
 
 #include "Pantalon.h"
 #include <iostream>
+#include <utility>
 [[maybe_unused]] int Pantalon::getMarime() const {
     return marime;
 }
 
 [[maybe_unused]] const std::string &Pantalon::getCuloare() const {
     return culoare;
-}
-
-void Pantalon::afisare() {
-    std::cout<< "Obiect: Pantalon, Pret: " << pret << ", material: " << material <<", marime: "<<marime;
-    if(lungi)
-        std::cout<<", pantaloni: lungi";
-    else
-        std::cout<<", pantaloni: scurti";
-    std::cout<< ", culoare : " << culoare << ", stil: " << stil<< "\n";
 }
 
 Pantalon::Pantalon(const Pantalon &other) :Haina(other),marime(other.marime),lungi(other.lungi),culoare(other.culoare) {
@@ -36,26 +28,38 @@ Pantalon &Pantalon::operator=(const Pantalon &other) {
     return *this;
 }
 
-std::ostream &operator<<(std::ostream &os, Pantalon pt) {
-    pt.afisare();
+std::ostream &operator<<(std::ostream &os, const Pantalon& pt) {
+    pt.afisare(os);
     return os;
 }
 
 
 Pantalon::Pantalon(float pret, const std::string &material, const std::string &stil, int marime, bool lungi,
-                   const std::string &culoare) : Haina(pret, material, stil), marime(marime), lungi(lungi),
-                                                 culoare(culoare) {}
+                   std::string culoare) : Haina(pret, material, stil), marime(marime), lungi(lungi),
+                                                 culoare(std::move(culoare)) {}
 
 bool Pantalon::matches(std::shared_ptr<Haina> haina)const {
-    if(haina->getStil().compare("Vintage")==0 && !this->isLungi())
+    if(haina->getStil()=="Vintage" && !this->isLungi())
         return false;
-    if(haina->getStil().compare("Country")==0 && !this->isLungi())
+    if(haina->getStil()=="Country" && !this->isLungi())
         return false;
     return true;
 }
 
-Pantalon::Pantalon() {}
+Pantalon::Pantalon() = default;
 
 bool Pantalon::isLungi() const {
     return lungi;
+}
+
+void Pantalon::afisare(std::ostream &os) const {
+    std::cout<<"\n";
+    std::cout<<"Obiect: Pantalon, ";
+    Haina::afisare(os);
+    const auto& opl = *this;
+    if(opl.lungi)
+        os<<", pantaloni: lungi";
+    else
+        os<<", pantaloni: scurti";
+    os<< ", culoare : " << culoare << ", stil: " << stil<< "\n";
 }

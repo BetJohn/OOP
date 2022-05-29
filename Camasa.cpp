@@ -4,6 +4,8 @@
 
 #include "Camasa.h"
 
+#include <utility>
+
 
 [[maybe_unused]] bool Camasa::isManecaLunga() const {
     return maneca_lunga;
@@ -12,25 +14,33 @@
 [[maybe_unused]] const std::string &Camasa::getCuloare() const {
     return culoare;
 }
-void Camasa::afisare() {
-
-    std::cout<< "Obiect: Camasa, Pret: " << pret << ", material: " << material<< ", stil: " << stil;
-    std::cout<< ", culoare : " << culoare;
-    if(maneca_lunga)
-        std::cout<<"Maneca lunga\n";
-    else
-        std::cout<<"Maneca scurta\n";
-}
 
 [[maybe_unused]] bool Camasa::matches(const std::shared_ptr<Haina> haina)const{
-    if(haina->getStil().compare("Party")==0 && this->material.substr(0,5).compare("Piele")==0)
+    if(haina->getStil()=="Party" && this->material.substr(0,5)=="Piele")
         return false;
-    if(haina->getStil().compare("Vintage")==0 && !this->isManecaLunga())
+    if(haina->getStil()=="Vintage" && !this->isManecaLunga())
         return false;
     return true;
 }
 
 Camasa::Camasa(float pret, const std::string &material, const std::string &stil, bool manecaLunga,
-               const std::string &culoare) : Haina(pret, material, stil), maneca_lunga(manecaLunga), culoare(culoare) {}
+               std::string culoare) : Haina(pret, material, stil), maneca_lunga(manecaLunga), culoare(std::move(culoare)) {}
 
-Camasa::Camasa() {}
+Camasa::Camasa() = default;
+
+void Camasa::afisare(std::ostream &os) const {
+    std::cout<<"\n";
+    std::cout<<"Obiect: Camasa, ";
+    Haina::afisare(os);
+    const auto& opl = *this;
+    std::cout<< ", culoare : " << opl.culoare;
+    if(opl.maneca_lunga)
+        std::cout<<" Maneca lunga\n";
+    else
+        std::cout<<" Maneca scurta\n";
+}
+
+std::ostream &operator<<(std::ostream &os, const Camasa &camasa) {
+    camasa.afisare(os);
+    return os;
+}

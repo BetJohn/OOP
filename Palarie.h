@@ -6,6 +6,7 @@
 #define HAINA_H_PALARIE_H
 
 
+#include <ostream>
 #include "Haina.h"
 
 class [[maybe_unused]] Palarie : public  Haina {
@@ -13,15 +14,17 @@ protected:
     std::string forma;
     char sex;
 public:
-    [[maybe_unused]] Palarie(float pret, const std::string &material, const std::string &stil, char sex, const std::string &forma);
+    [[maybe_unused]] Palarie(float pret, const std::string &material, const std::string &stil, char sex, std::string forma);
 
-    void afisare() override;
+    friend std::ostream &operator<<(std::ostream &os, const Palarie &palarie);
 
-    bool matches(std::shared_ptr<Haina> haina)const override;
+    void afisare(std::ostream &os) const override;
 
-    [[maybe_unused]] char getSex() const;
+    [[nodiscard]] bool matches(std::shared_ptr<Haina> haina)const override;
 
-    [[maybe_unused]] const std::string &getForma() const;
+    [[maybe_unused]] [[nodiscard]] char getSex() const;
+
+    [[maybe_unused]] [[nodiscard]] const std::string &getForma() const;
 };
 
 

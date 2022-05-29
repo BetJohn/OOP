@@ -7,8 +7,8 @@
 #include <utility>
 
 void Sifonier::afisare_haine() {
-    for(const auto haina:h_haine)
-        haina->afisare();
+    for(const auto& haina:h_haine)
+        std::cout<<*haina;
 }
 
 void Sifonier::afisare_pantofi() {
