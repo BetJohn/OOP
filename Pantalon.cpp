@@ -5,9 +5,6 @@
 #include "Pantalon.h"
 #include <iostream>
 #include <utility>
-[[maybe_unused]] int Pantalon::getMarime() const {
-    return marime;
-}
 
 Pantalon::Pantalon(const Pantalon &other) :Haina(other),marime(other.marime),lungi(other.lungi),culoare(other.culoare) {
     std::cout << "Constr de copiere Pantalon\n";

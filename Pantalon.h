@@ -23,7 +23,6 @@ public:
              std::string culoare);
 
     Pantalon& operator=(const Pantalon& other);
-    [[maybe_unused]] [[nodiscard]] int getMarime() const;
 
     [[nodiscard]] bool isLungi() const;
 
