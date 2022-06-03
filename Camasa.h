@@ -23,7 +23,6 @@ public:
 
     void afisare(std::ostream &os) const override;
 
-    [[maybe_unused]] [[nodiscard]] const std::string &getCuloare() const;
 
     [[maybe_unused]] [[nodiscard]] std::shared_ptr<Haina> clone() const override {
         return std::make_shared <Camasa>(*this);

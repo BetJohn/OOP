@@ -17,15 +17,6 @@ bool Palarie::matches(const std::shared_ptr<Haina> haina) const {
     return true;
 
 }
-
-[[maybe_unused]] char Palarie::getSex() const {
-    return sex;
-}
-
-[[maybe_unused]] const std::string &Palarie::getForma() const {
-    return forma;
-}
-
 std::ostream &operator<<(std::ostream &os, const Palarie &palarie) {
     palarie.afisare(os);
     return os;

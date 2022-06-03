@@ -5,5 +5,5 @@
 #ifndef MAIN_CPP_SURSA_H
 #define MAIN_CPP_SURSA_H
 template <typename T>
-void show(T x);
+void show(const T& x);
 #endif //MAIN_CPP_SURSA_H

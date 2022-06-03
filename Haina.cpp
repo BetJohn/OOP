@@ -11,10 +11,6 @@ Haina::Haina(float pret, std::string material) :pret(pret),material(std::move(ma
 Haina::Haina(const Haina &other) : pret(other.pret), material(other.material) {
 }
 
-[[maybe_unused]] float Haina::getPret() const {
-    return pret;
-}
-
 [[maybe_unused]] std::string Haina::getMaterial() {
     return material;
 }

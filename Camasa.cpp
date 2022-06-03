@@ -11,10 +11,6 @@
     return maneca_lunga;
 }
 
-[[maybe_unused]] const std::string &Camasa::getCuloare() const {
-    return culoare;
-}
-
 [[maybe_unused]] bool Camasa::matches(const std::shared_ptr<Haina> haina)const{
     if(haina->getStil()=="Party" && this->material.substr(0,5)=="Piele")
         return false;

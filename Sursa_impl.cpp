@@ -4,8 +4,8 @@
 
 #include "Sursa.cpp"
 #include "Pantof.h"
-
+#include "Pantalon.h"
 template
-void show<int>(int x);
+        void show<Pantof>(const Pantof& x);
 template
-void show<Pantof>(Pantof x);
+        void show<Pantalon>(const Pantalon& x);

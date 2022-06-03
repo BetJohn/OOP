@@ -21,10 +21,6 @@ public:
     void afisare(std::ostream &os) const override;
 
     [[nodiscard]] bool matches(std::shared_ptr<Haina> haina)const override;
-
-    [[maybe_unused]] [[nodiscard]] char getSex() const;
-
-    [[maybe_unused]] [[nodiscard]] const std::string &getForma() const;
 };
 
 

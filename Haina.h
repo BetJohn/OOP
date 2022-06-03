@@ -27,8 +27,6 @@ public:
 
     Haina(const Haina& other);
 
-    [[maybe_unused]] [[nodiscard]] float getPret() const;
-
     [[maybe_unused]] std::string getMaterial();
 
     virtual void afisare(std::ostream &os) const ;

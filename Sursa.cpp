@@ -6,6 +6,6 @@
 #include <iostream>
 
 template <typename T>
-void show(T x) {
+void show(const T& x) {
     std::cout<< x;
 }

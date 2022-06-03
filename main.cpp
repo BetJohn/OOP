@@ -192,7 +192,8 @@ int main()
     PantofBuilder pantofBuilder;
     Pantof pantof = pantofBuilder.marime(10).pret(50).build();
     std::cout<<"Apelul functie show folosind template un pantof:\n";
-    show(pantof);
+    show<Pantof>(pantof);
+    show<Pantalon>(blugi);
     Sifonier Sifonierul_nostru = Sifonier{nr_pantofi,nr_haine,haine,pantofi};
     meniu(Sifonierul_nostru);
     return 0;
