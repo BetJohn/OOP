@@ -14,6 +14,7 @@ protected:
     float pret{};
     std::string material;
     int marime{};
+    friend class PantofBuilder;
 public:
     Pantof() = default;
     Pantof(float pret, std::string material, int marime);

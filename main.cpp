@@ -6,6 +6,9 @@
 #include "Camasa.h"
 #include "Palarie.h"
 #include "ExceptieNume.h"
+#include "Haina_factory.h"
+#include "PantofBuilder.h"
+#include "Sursa.h"
 #include <vector>
 #include <fstream>
 #include <memory>
@@ -185,6 +188,11 @@ int main()
         fin >> marime;
         pantofi[i] = Pantof(pret, material, marime);
     }
+    Pantalon blugi = Haina_factory::blugi();
+    PantofBuilder pantofBuilder;
+    Pantof pantof = pantofBuilder.marime(10).pret(50).build();
+    std::cout<<"Apelul functie show folosind template un pantof:\n";
+    show(pantof);
     Sifonier Sifonierul_nostru = Sifonier{nr_pantofi,nr_haine,haine,pantofi};
     meniu(Sifonierul_nostru);
     return 0;

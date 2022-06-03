@@ -16,6 +16,7 @@ protected:
 public:
     Pantalon(const Pantalon& other);
 
+
     [[maybe_unused]] [[nodiscard]] bool matches(std::shared_ptr<Haina> haina)const override;
 
     Pantalon(float pret, const std::string &material, const std::string &stil, int marime, bool lungi,
