@@ -19,13 +19,10 @@ public:
     Pantof() = default;
     Pantof(float pret, std::string material, int marime);
 
-    [[maybe_unused]] [[nodiscard]] float getPret() const;
-
     [[maybe_unused]] std::string getMaterial();
     Pantof(const Pantof& other);
     Pantof& operator=(const Pantof& other);
 
-    [[maybe_unused]] [[nodiscard]] int getMarime() const;
     friend std::ostream& operator<<(std::ostream& os, const Pantof& pt);
 };
 

@@ -29,8 +29,6 @@ public:
 
     void afisare(std::ostream &os) const override;
 
-    [[maybe_unused]] [[nodiscard]] const std::string &getCuloare() const;
-
     Pantalon();
 
     [[nodiscard]] std::shared_ptr<Haina> clone() const override {

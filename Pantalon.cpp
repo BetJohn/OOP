@@ -9,10 +9,6 @@
     return marime;
 }
 
-[[maybe_unused]] const std::string &Pantalon::getCuloare() const {
-    return culoare;
-}
-
 Pantalon::Pantalon(const Pantalon &other) :Haina(other),marime(other.marime),lungi(other.lungi),culoare(other.culoare) {
     std::cout << "Constr de copiere Pantalon\n";
 }

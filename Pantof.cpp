@@ -6,9 +6,6 @@
 
 Pantof::Pantof(float pret, std::string material, int marime) :pret(pret), material(std::move(material)), marime(marime){}
 
-[[maybe_unused]] float Pantof::getPret() const {
-    return this->pret;
-}
 
 [[maybe_unused]] std::string Pantof::getMaterial() {
     return material;
@@ -22,10 +19,6 @@ Pantof &Pantof::operator=(const Pantof &other) {
     material = other.material;
     marime  = other.marime;
     return *this;
-}
-
-[[maybe_unused]] int Pantof::getMarime() const {
-    return marime;
 }
 
 std::ostream &operator<<(std::ostream &os, const Pantof &pt) {
