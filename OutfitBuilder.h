@@ -23,12 +23,5 @@ public:
     [[maybe_unused]] Outfit build();
 };
 
-Outfit &Outfit::operator=(const Outfit &other) {
-    for(int i=0;i<haineAlese.size();i++)
-        haineAlese[i] = other.haineAlese[i];
-    return *this;
-}
-
-
 
 #endif //MAIN_CPP_OUTFITBUILDER_H
