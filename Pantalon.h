@@ -24,6 +24,14 @@ public:
 
     Pantalon& operator=(const Pantalon& other);
 
+    Pantalon(float pret, const std::string &material, const std::string &stil);
+
+    int getMarime() const;
+
+    const std::string &getCuloare() const;
+
+    std::string getType() override;
+
     [[nodiscard]] bool isLungi() const;
 
     void afisare(std::ostream &os) const override;

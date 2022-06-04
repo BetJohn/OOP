@@ -34,3 +34,11 @@ std::ostream &operator<<(std::ostream &os, const Haina &haina) {
 void Haina::afisare(std::ostream &os) const {
     os << "pret: " << pret << " material: " << material << " stil: " << stil;
 }
+
+[[maybe_unused]] std::string Haina::getType() {
+    return "Haina";
+}
+
+float Haina::getPret() const {
+    return pret;
+}

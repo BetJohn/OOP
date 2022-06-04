@@ -40,3 +40,22 @@ std::ostream &operator<<(std::ostream &os, const Camasa &camasa) {
     camasa.afisare(os);
     return os;
 }
+
+Camasa &Camasa::operator=(const Camasa& other) {
+    pret = other.pret;
+    material = other.material;
+    stil = other.stil;
+    culoare = other.culoare;
+    maneca_lunga = other.maneca_lunga;
+    return *this;
+}
+
+std::string Camasa::getType() {
+    return "Camasa";
+}
+
+const std::string &Camasa::getCuloare() const {
+    return culoare;
+}
+
+Camasa::Camasa(float pret, const std::string &material, const std::string &stil) : Haina(pret, material, stil) {}

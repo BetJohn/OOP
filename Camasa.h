@@ -8,21 +8,26 @@
 #include <ostream>
 #include "Haina.h"
 
-class [[maybe_unused]] Camasa: public Haina{
+class Camasa: public Haina{
 protected:
-    bool maneca_lunga{};
+    bool maneca_lunga;
     std::string culoare;
 public:
     [[maybe_unused]] [[nodiscard]] bool isManecaLunga() const;
 
+    Camasa(float pret, const std::string &material, const std::string &stil);
 
     Camasa(float pret, const std::string &material, const std::string &stil, bool manecaLunga,
            std::string culoare);
 
     Camasa();
 
+    Camasa& operator=(const Camasa& other);
     void afisare(std::ostream &os) const override;
 
+    [[nodiscard]] const std::string &getCuloare() const;
+
+    std::string getType() override;
 
     [[maybe_unused]] [[nodiscard]] std::shared_ptr<Haina> clone() const override {
         return std::make_shared <Camasa>(*this);

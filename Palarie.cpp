@@ -10,9 +10,9 @@
         : Haina(pret, material, stil), sex(sex), forma(std::move(forma)) {}
 
 bool Palarie::matches(const std::shared_ptr<Haina> haina) const {
-    if(forma!="rotunda" && haina->getStil()=="Party")
+    if(forma=="Rotunda" && haina->getStil()=="Party")
         return false;
-    if(forma == "patrata" && haina->getStil()=="Vintage")
+    if(forma == "Patrata" && haina->getStil()=="Vintage")
         return false;
     return true;
 
@@ -33,3 +33,26 @@ void Palarie::afisare(std::ostream &os) const {
     else
         std::cout<<", Sex: Feminin\n";
 }
+
+Palarie &Palarie::operator=(const Palarie &other) {
+    pret = other.pret;
+    material = other.material;
+    stil = other.stil;
+    forma = other.forma;
+    sex = other.sex;
+    return *this;
+}
+
+std::string Palarie::getType() {
+    return "Palarie";
+}
+
+const std::string &Palarie::getForma() const {
+    return forma;
+}
+
+char Palarie::getSex() const {
+    return sex;
+}
+
+Palarie::Palarie(float pret, const std::string &material, const std::string &stil) : Haina(pret, material, stil) {}

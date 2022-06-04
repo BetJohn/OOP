@@ -23,6 +23,7 @@ public:
 protected:
     std:: vector <Pantof> p_pantofi;
 public:
+
     Sifonier() = default;
 //    Sifonier(int nr_pantofi, int nr_haine, std::vector <Pantof> pantofi,std::vector <std::shared_ptr<Haina>> haine);
     void afisare_haine();
