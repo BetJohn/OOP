@@ -9,8 +9,6 @@
 #include "PantofBuilder.h"
 #include "Sursa.h"
 #include "Aplicatie.h"
-#include "Outfit.h"
-#include "OutfitBuilder.h"
 #include <vector>
 #include <fstream>
 #include <memory>
@@ -91,9 +89,6 @@ int main()
     show<Pantof>(pantof);
     show<Pantalon>(blugi);
     Sifonier Sifonierul_nostru = Sifonier{nr_pantofi,nr_haine,haine,pantofi};
-    auto haina1 = std::make_shared<Palarie>(10,"bumbac","Vintage",'M',"Rotunda");
-    auto haina2 = std::make_shared<Pantalon>(10,"blug","liceu",324,true,"albastru");
-    auto haina3 = std::make_shared<Camasa>(10,"bumbac","Party",true,"Violet");
     Aplicatie::meniu(Sifonierul_nostru);
     return 0;
 }

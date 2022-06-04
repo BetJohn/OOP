@@ -13,7 +13,6 @@ public:
     static void afisare_meniu();
 
     [[maybe_unused]] static void meniu(Sifonier Sifonierul_nostru);
-    static void verifica_nume(const std::string& nume);
 
 };
 

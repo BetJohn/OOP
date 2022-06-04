@@ -25,8 +25,6 @@ public:
     Camasa& operator=(const Camasa& other);
     void afisare(std::ostream &os) const override;
 
-    [[nodiscard]] const std::string &getCuloare() const;
-
     std::string getType() override;
 
     [[maybe_unused]] [[nodiscard]] std::shared_ptr<Haina> clone() const override {

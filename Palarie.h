@@ -22,10 +22,6 @@ public:
 
     Palarie(float pret, const std::string &material, const std::string &stil);
 
-    const std::string &getForma() const;
-
-    char getSex() const;
-
     std::string getType() override;
 
     void afisare(std::ostream &os) const override;

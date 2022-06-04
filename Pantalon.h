@@ -26,10 +26,6 @@ public:
 
     Pantalon(float pret, const std::string &material, const std::string &stil);
 
-    int getMarime() const;
-
-    const std::string &getCuloare() const;
-
     std::string getType() override;
 
     [[nodiscard]] bool isLungi() const;

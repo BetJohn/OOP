@@ -61,12 +61,4 @@ std::string Pantalon::getType() {
     return "Pantalon";
 }
 
-int Pantalon::getMarime() const {
-    return marime;
-}
-
-const std::string &Pantalon::getCuloare() const {
-    return culoare;
-}
-
 Pantalon::Pantalon(float pret, const std::string &material, const std::string &stil) : Haina(pret, material, stil) {}

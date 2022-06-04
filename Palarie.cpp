@@ -47,12 +47,4 @@ std::string Palarie::getType() {
     return "Palarie";
 }
 
-const std::string &Palarie::getForma() const {
-    return forma;
-}
-
-char Palarie::getSex() const {
-    return sex;
-}
-
 Palarie::Palarie(float pret, const std::string &material, const std::string &stil) : Haina(pret, material, stil) {}
