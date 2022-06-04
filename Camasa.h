@@ -18,8 +18,6 @@ public:
     Camasa(float pret, const std::string &material, const std::string &stil, bool manecaLunga,
            std::string culoare);
 
-    Camasa();
-
     Camasa& operator=(const Camasa& other);
     void afisare(std::ostream &os) const override;
 

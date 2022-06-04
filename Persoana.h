@@ -22,10 +22,6 @@ public:
         return nume;
     }
 
-    [[nodiscard]] const Outfit &getOutfit() const {
-        return outfit;
-    }
-
     friend std::ostream &operator<<(std::ostream &os, const Persoana &persoana) {
         os << "nume: " << persoana.nume << ", outfit: " << persoana.outfit;
         return os;

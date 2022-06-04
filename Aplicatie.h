@@ -14,7 +14,7 @@ class Aplicatie {
 public:
     void afisare_meniu();
 
-    const std::vector<Outfit> &getOutfituri() const;
+    [[nodiscard]] const std::vector<Outfit> &getOutfituri() const;
 
     [[maybe_unused]] void meniu(Sifonier Sifonierul_nostru);
 

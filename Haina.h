@@ -37,10 +37,8 @@ public:
         return nullptr;
     }
 
-    float getPret() const;
-
     [[maybe_unused]] virtual std::string getType();
-    [[nodiscard]] virtual bool matches(std::shared_ptr<Haina> haina)const{return false;};
+    [[nodiscard]] virtual bool matches(std::shared_ptr<Haina>const haina)const{return false;};
 };
 
 

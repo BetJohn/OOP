@@ -39,6 +39,3 @@ void Haina::afisare(std::ostream &os) const {
     return "Haina";
 }
 
-float Haina::getPret() const {
-    return pret;
-}

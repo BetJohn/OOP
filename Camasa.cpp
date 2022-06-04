@@ -22,8 +22,6 @@
 Camasa::Camasa(float pret, const std::string &material, const std::string &stil, bool manecaLunga,
                std::string culoare) : Haina(pret, material, stil), maneca_lunga(manecaLunga), culoare(std::move(culoare)) {}
 
-Camasa::Camasa() = default;
-
 void Camasa::afisare(std::ostream &os) const {
     std::cout<<"\n";
     std::cout<<"Obiect: Camasa, ";
