@@ -72,7 +72,6 @@ void Aplicatie::afisare_meniu() {
                 std::string material;
                 std::cin.get();
                 std::getline(std::cin,material);
-                std:: vector <std::shared_ptr<Haina>> haineAlese;
                 for(const auto& haina:Sifonierul_nostru.getHHaine()){
                     if(haina->getMaterial() == material && haina->getType()=="Camasa")
                     {

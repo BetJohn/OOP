@@ -16,7 +16,7 @@ class Persoana {
     [[maybe_unused]] T nume;
     [[maybe_unused]] Outfit outfit;
 public:
-    [[maybe_unused]] Persoana(T nume, Outfit outfit) : nume(nume), outfit(std::move(outfit)) {}
+    [[maybe_unused]] Persoana(const T& nume, Outfit outfit) : nume(nume), outfit(std::move(outfit)) {}
 
     [[maybe_unused]] T getNume() const {
         return nume;
