@@ -9,12 +9,14 @@
 #include "PantofBuilder.h"
 #include "Sursa.h"
 #include "Aplicatie.h"
+#include "Persoana.h"
 #include <vector>
 #include <fstream>
 #include <memory>
 int main()
 {
     std:: ifstream fin("date.in");
+    std::vector<Outfit> outfituri;
     int nr_pantofi,nr_haine,marime;
     float pret;
     std::string stil;
@@ -89,6 +91,17 @@ int main()
     show<Pantof>(pantof);
     show<Pantalon>(blugi);
     Sifonier Sifonierul_nostru = Sifonier{nr_pantofi,nr_haine,haine,pantofi};
-    Aplicatie::meniu(Sifonierul_nostru);
+    Aplicatie aplicatie;
+    aplicatie.meniu(Sifonierul_nostru);
+    Outfit o1;
+    outfituri = aplicatie.getOutfituri();
+    if(!outfituri.empty()) {
+        Persoana<std::string> p1("Ioan", outfituri[0]);
+        std::cout<<p1;
+    }
+    else {
+        Persoana<std::string> p1("Ioan", o1);
+        std::cout << p1;
+    }
     return 0;
 }

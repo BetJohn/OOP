@@ -60,5 +60,3 @@ void Pantalon::afisare(std::ostream &os) const {
 std::string Pantalon::getType() {
     return "Pantalon";
 }
-
-Pantalon::Pantalon(float pret, const std::string &material, const std::string &stil) : Haina(pret, material, stil) {}

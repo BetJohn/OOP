@@ -7,12 +7,16 @@
 
 #include <iostream>
 #include "Sifonier.h"
+#include "Outfit.h"
 
 class Aplicatie {
+    [[maybe_unused]] std::vector<Outfit>outfituri;
 public:
-    static void afisare_meniu();
+    void afisare_meniu();
 
-    [[maybe_unused]] static void meniu(Sifonier Sifonierul_nostru);
+    const std::vector<Outfit> &getOutfituri() const;
+
+    [[maybe_unused]] void meniu(Sifonier Sifonierul_nostru);
 
 };
 

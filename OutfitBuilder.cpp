@@ -12,10 +12,7 @@
             if(h1 != h2 && !h1->matches(h2))
                     throw ExceptieModa("Hainele astea nu se potrivesc, va trebui sa le alegi din nou..\n");
 
-    std::cout<<"Super, outfitul tau este grozav, iata ce stiluri ai combinat:";
-    for(const auto& haina: outfit.haineAlese)
-        std::cout<<haina->getStil()<<" ";
-    std::cout<<"\n";
+
     return outfit;
 }
 
@@ -32,4 +29,10 @@
 [[maybe_unused]] OutfitBuilder &OutfitBuilder::palarie(const std::shared_ptr<Palarie> &palarie) {
     outfit.haineAlese.emplace_back(palarie);
     return *this;
+}
+
+std::ostream &operator<<(std::ostream &os, const Outfit &outfit) {
+    for(const auto& haina: outfit.haineAlese)
+        std::cout<<*haina<<" ";
+    return os;
 }

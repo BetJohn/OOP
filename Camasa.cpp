@@ -53,5 +53,3 @@ Camasa &Camasa::operator=(const Camasa& other) {
 std::string Camasa::getType() {
     return "Camasa";
 }
-
-Camasa::Camasa(float pret, const std::string &material, const std::string &stil) : Haina(pret, material, stil) {}

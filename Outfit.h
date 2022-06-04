@@ -7,6 +7,7 @@
 
 
 #include <vector>
+#include <ostream>
 #include "Pantof.h"
 #include "Pantalon.h"
 #include "Camasa.h"
@@ -16,6 +17,9 @@ class Outfit {
 protected:
     std:: vector <std::shared_ptr<Haina>> haineAlese;
     friend class OutfitBuilder;
+public:
+    Outfit& operator=(const Outfit& other);
+    friend std::ostream &operator<<(std::ostream &os, const Outfit &outfit);
 };
 
 

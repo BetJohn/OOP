@@ -8,6 +8,7 @@
 #include "Pantalon.h"
 #include "Palarie.h"
 #include "OutfitBuilder.h"
+#include "ExceptieModa.h"
 
 void Aplicatie::afisare_meniu() {
     std::cout<<"1. Vezi ce haine exista in sifonier\n";
@@ -20,8 +21,7 @@ void Aplicatie::afisare_meniu() {
 
 [[maybe_unused]] void Aplicatie::meniu(Sifonier Sifonierul_nostru) {
     int comanda;
-    Aplicatie a;
-    a.afisare_meniu();
+    afisare_meniu();
     std::cin>>comanda;
     while(true) {
         switch (comanda) {
@@ -65,18 +65,19 @@ void Aplicatie::afisare_meniu() {
                 break;
             }
             case 5: {
+
+                OutfitBuilder outfitBuilder;
+
                 std::cout<<"Ai ales sa faci un outfit. Introdu materialul camasii:\n";
                 std::string material;
                 std::cin.get();
                 std::getline(std::cin,material);
                 std:: vector <std::shared_ptr<Haina>> haineAlese;
-                int gasit = 0;
                 for(const auto& haina:Sifonierul_nostru.getHHaine()){
                     if(haina->getMaterial() == material && haina->getType()=="Camasa")
                     {
                         std::cout<<"Ura, am gasit camasa! Acum urmeaza pantalonii. Introdu materialul:\n";
-                        haineAlese.emplace_back(haina);
-                        gasit++;
+                        outfitBuilder.camasa(std::dynamic_pointer_cast<Camasa>(haina));
                         break;
                     }
                 }
@@ -85,8 +86,7 @@ void Aplicatie::afisare_meniu() {
                     if(haina->getMaterial() == material && haina->getType()=="Pantalon")
                     {
                         std::cout<<"Ura, am gasit pantalonii! Acum urmeaza Palaria. Introdu materialul:\n";
-                        haineAlese.emplace_back(haina);
-                        gasit++;
+                        outfitBuilder.pantalon(std::dynamic_pointer_cast<Pantalon>(haina));
                         break;
                     }
                 }
@@ -94,21 +94,18 @@ void Aplicatie::afisare_meniu() {
                 for(const auto& haina:Sifonierul_nostru.getHHaine()){
                     if(haina->getMaterial() == material && haina->getType()=="Palarie")
                     {
-                        haineAlese.emplace_back(haina);
-                        gasit++;
+                        outfitBuilder.palarie(std::dynamic_pointer_cast<Palarie>(haina));
                         break;
                     }
                 }
-                if(gasit !=3)
-                    std::cout<<"Ceva nu a mers bine, vei fi redirectionat inapoi\n";
-                else
+                try
                 {
-                    OutfitBuilder outfitBuilder;
-                    std::shared_ptr<Camasa> haina1 = std::make_shared<Camasa>(haineAlese[0]->getPret(),haineAlese[0]->getMaterial(),haineAlese[0]->getStil());
-                    auto haina2 = std::make_shared<Pantalon>(haineAlese[1]->getPret(),haineAlese[1]->getMaterial(),haineAlese[1]->getStil());
-                    auto haina3 = std::make_shared<Palarie>(haineAlese[2]->getPret(),haineAlese[2]->getMaterial(),haineAlese[2]->getStil());
-                    Outfit outfit = outfitBuilder.camasa(haina1).pantalon(haina2).palarie(haina3).build();
-
+                    Outfit outfit = outfitBuilder.build();
+                    std::cout<<"Super, outfitul tau este grozav, iata ce stiluri ai combinat:";
+                    std::cout<<outfit;
+                    outfituri.emplace_back(outfit);
+                }catch(ExceptieModa &exceptieModa){
+                    std::cout<<exceptieModa.what();
                 }
                 break;
             }
@@ -124,4 +121,8 @@ void Aplicatie::afisare_meniu() {
         afisare_meniu();
         std::cin>>comanda;
     }
+}
+
+const std::vector<Outfit> &Aplicatie::getOutfituri() const {
+    return outfituri;
 }

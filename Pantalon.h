@@ -24,8 +24,6 @@ public:
 
     Pantalon& operator=(const Pantalon& other);
 
-    Pantalon(float pret, const std::string &material, const std::string &stil);
-
     std::string getType() override;
 
     [[nodiscard]] bool isLungi() const;

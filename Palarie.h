@@ -20,8 +20,6 @@ public:
 
     Palarie& operator=(const Palarie& other);
 
-    Palarie(float pret, const std::string &material, const std::string &stil);
-
     std::string getType() override;
 
     void afisare(std::ostream &os) const override;

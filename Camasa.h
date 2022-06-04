@@ -15,8 +15,6 @@ protected:
 public:
     [[maybe_unused]] [[nodiscard]] bool isManecaLunga() const;
 
-    Camasa(float pret, const std::string &material, const std::string &stil);
-
     Camasa(float pret, const std::string &material, const std::string &stil, bool manecaLunga,
            std::string culoare);
 

@@ -46,5 +46,3 @@ Palarie &Palarie::operator=(const Palarie &other) {
 std::string Palarie::getType() {
     return "Palarie";
 }
-
-Palarie::Palarie(float pret, const std::string &material, const std::string &stil) : Haina(pret, material, stil) {}
