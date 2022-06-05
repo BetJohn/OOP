@@ -104,11 +104,11 @@ int main()
         std::cout << p1;
     }
     if(outfituri.size()>1) {
-        Persoana<float> p2(151, outfituri[1]);
+        Persoana<int> p2(151, outfituri[1]);
         std::cout<<p2;
     }
     else {
-        Persoana<float> p2(151, outfituri[0]);
+        Persoana<int> p2(151, o1);
         std::cout<<p2;
     }
     return 0;
