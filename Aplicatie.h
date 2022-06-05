@@ -10,8 +10,15 @@
 #include "Outfit.h"
 
 class Aplicatie {
+    Aplicatie() = default;
     [[maybe_unused]] std::vector<Outfit>outfituri;
 public:
+    Aplicatie(const Aplicatie&) = delete;
+    Aplicatie &operator=(const Aplicatie&) = delete;
+    static Aplicatie& get_app(){
+        static Aplicatie app;
+        return app;
+    }
     void afisare_meniu();
 
     [[nodiscard]] const std::vector<Outfit> &getOutfituri() const;

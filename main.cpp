@@ -91,7 +91,7 @@ int main()
     show<Pantof>(pantof);
     show<Pantalon>(blugi);
     Sifonier Sifonierul_nostru = Sifonier{nr_pantofi,nr_haine,haine,pantofi};
-    Aplicatie aplicatie;
+    auto& aplicatie = Aplicatie::get_app();
     aplicatie.meniu(Sifonierul_nostru);
     Outfit o1;
     outfituri = aplicatie.getOutfituri();
@@ -102,6 +102,14 @@ int main()
     else {
         Persoana<std::string> p1("Ioan", o1);
         std::cout << p1;
+    }
+    if(outfituri.size()>1) {
+        Persoana<float> p2(151, outfituri[1]);
+        std::cout<<p2;
+    }
+    else {
+        Persoana<float> p2(151, outfituri[0]);
+        std::cout<<p2;
     }
     return 0;
 }

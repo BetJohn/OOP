@@ -13,17 +13,17 @@
 
 template<typename T>
 class Persoana {
-    [[maybe_unused]] T nume;
+    [[maybe_unused]] T ID;
     [[maybe_unused]] Outfit outfit;
 public:
-    [[maybe_unused]] Persoana(const T& nume, Outfit outfit) : nume(nume), outfit(std::move(outfit)) {}
+    [[maybe_unused]] Persoana(const T& ID, Outfit outfit) : ID(ID), outfit(std::move(outfit)) {}
 
-    [[maybe_unused]] T getNume() const {
-        return nume;
+    [[maybe_unused]] T getID() const {
+        return ID;
     }
 
     friend std::ostream &operator<<(std::ostream &os, const Persoana &persoana) {
-        os << "nume: " << persoana.nume << ", outfit: " << persoana.outfit;
+        os << "ID: " << persoana.ID << ", outfit: " << persoana.outfit;
         return os;
     }
 };
